@@ -21,7 +21,7 @@
 #
 -include device/hp/tegra4-common/tegra4.mk
 
-TARGET_SPECIFIC_HEADER_PATH := device/nvidia/tegra4-common/include
+TARGET_SPECIFIC_HEADER_PATH := device/hp/tegra4-common/include
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := olive

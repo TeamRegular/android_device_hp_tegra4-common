@@ -18,9 +18,11 @@ PRODUCT_AAPT_CONFIG += mdpi hdpi xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 800
 
-$(call inherit-product, frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk)
+-include vendor/hp/olive/olive-vendor.mk
 
-$(call inherit-product-if-exists, vendor/nvidia/shieldtablet/shieldtablet-vendor.mk)
+# Overlay
+#DEVICE_PACKAGE_OVERLAYS += \
+#    device/hp/tegra4-common/overlay
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -85,7 +87,8 @@ PRODUCT_COPY_FILES += \
 # keylayout
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
-    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl# \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+# \
 #    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7210.kl
 
 # Media config
@@ -177,10 +180,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.tegra.didim.enable = 1 \
     persist.tegra.didim.video = 5 \
     persist.tegra.didim.normal = 3
-
-
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    device/hp/tegra4-common/overlay
 
 
