@@ -18,6 +18,8 @@ PRODUCT_AAPT_CONFIG += mdpi hdpi xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 800
 
+-include frameworks/native/build/tablet-7in-xhdpi-2048-dalvik-heap.mk
+
 -include vendor/hp/olive/olive-vendor.mk
 
 # Overlay
@@ -36,8 +38,6 @@ PRODUCT_PACKAGES += \
     init.hdcp.rc \
     init.recovery.rc \
     init.tf.rc \
-    init_no_root_device.rc \
-    init.tegratab_factory.rc \
     init.trace.rc 
 
 
@@ -81,7 +81,7 @@ PRODUCT_PACKAGES += \
 
 # idc
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/idc/touch.idc:system/usr/idc/touch.idc \
+  $(LOCAL_PATH)/idc/touch_fusion.idc:system/usr/idc/touch_fusion.idc \
   $(LOCAL_PATH)/idc/sensor00fn11.idc:system/usr/idc/sensor00fn11.idc
 
 # keylayout
@@ -111,11 +111,6 @@ PRODUCT_PACKAGES += \
     tinymix \
     tinyplay \
     xaplay
-
-# Camera
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/camera/nvcamera.conf:system/etc/nvcamera.conf \
-    $(LOCAL_PATH)/camera/model_frontal.xml:system/etc/model_frontal.xml
 
 PRODUCT_PACKAGES += \
     libnetcmdiface
@@ -147,38 +142,9 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # Disable SELinux
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.boot.selinux=disabled
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    ro.boot.selinux=disabled
 
 # Common build.props
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version = 196609 \
-    wifi.interface=wlan0 \
-    ap.interface=wlan0 \
-    persist.tegra.nvmmlite = 1 \
-    persist.wlan.ti.calibrated = 0 \
-    ro.sf.override_null_lcd_density = 1 \
-    ro.sf.lcd_density=320 \
-    persist.tegra.compositor=glcomposer \
-    ro.input.noresample=1 \
-    ro.com.google.clientidbase=android-nvidia \
-    ro.zygote.disable_gl_preload=true \
-    pbc.enabled=0 \
-    pbc.log=0 \
-    pbc.board_power_threshold=20000 \
-    pbc.low_polling_freq_threshold=1000 \
-    pbc.rails=cpu,core,dram,gpu \
-    pbc.cpu.power=/sys/bus/i2c/devices/7-0045/power1_input \
-    pbc.cpu.cap=/dev/cpu_freq_max \
-    pbc.cpu.cap.af=/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies \
-    pbc.core.power=/sys/bus/i2c/devices/7-0043/power1_input \
-    pbc.dram.power=/sys/bus/i2c/devices/7-0049/power1_input \
-    pbc.gpu.power=/sys/bus/i2c/devices/7-004b/power1_input \
-    pbc.gpu.cap=/dev/gpu_freq_max \
-    pbc.gpu.cap.af=/sys/devices/platform/host1x/gk20a.0/devfreq/gk20a.0/available_frequencies \
-    af.resampler.quality = 4 \
-    persist.tegra.didim.enable = 1 \
-    persist.tegra.didim.video = 5 \
-    persist.tegra.didim.normal = 3
-
-
+    ro.sf.lcd_density=213
