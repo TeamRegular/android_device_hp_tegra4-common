@@ -38,7 +38,13 @@ PRODUCT_PACKAGES += \
     init.hdcp.rc \
     init.recovery.rc \
     init.tf.rc \
-    init.trace.rc 
+    init.trace.rc
+
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/maxim_fp35.bin:recovery/root/system/vendor/firmware/maxim_fp35.bin \
+    $(LOCAL_PATH)/recovery/touch_fusion:recovery/root/system/vendor/bin/touch_fusion
+    $(LOCAL_PATH)/recovery/touch_fusion.cfg:recovery/root/system/vendor/firmware/touch_fusion.cfg
 
 
 # Enable repeatable keys in CWM

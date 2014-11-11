@@ -1,0 +1,4 @@
+on init
+
+    # Touchscreen firmware lies in vendor
+    symlink /system/vendor /vendor
